@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "776284513442",
+    "firebase_url": "https://silicon-tracker-default-rtdb.firebaseio.com",
+    "project_id": "silicon-tracker",
+    "storage_bucket": "silicon-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776284513442:android:64e9638cb4bf2baca563fb",
+        "android_client_info": {
+          "package_name": "com.silicon.silicontracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776284513442-q3rlhq9ohmibqa1hpsoffng9ae4g587b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCUTkvdomw4vjEX9sJfbAqj8bWA5IsPMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776284513442-q3rlhq9ohmibqa1hpsoffng9ae4g587b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
