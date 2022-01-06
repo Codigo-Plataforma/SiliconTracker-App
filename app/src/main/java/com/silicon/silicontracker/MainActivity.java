@@ -28,27 +28,21 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 public class MainActivity extends AppCompatActivity {
     Button btnUpload;
     FusedLocationProviderClient fusedLocationProviderClient;
-     FirebaseDatabase fireDb;
 
-     DatabaseReference reference;
     String latitude,longitude,city,fullAddress,pinCode;
 
 
@@ -60,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnUpload=findViewById(R.id.btnUpload);
 
-
-        fireDb=FirebaseDatabase.getInstance();
-        reference=fireDb.getReference("location");
 
 
 
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         latitude= String.valueOf(lati);
 
 
-                        reference.child("latitude").setValue(latitude);
+
 
                         float longi = (float) address.get(0).getLongitude();
                         longitude= String.valueOf(longi);
@@ -115,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         city=address.get(0).getSubAdminArea();
                         Log.d("CityResponse",city);
 
-                        reference.child("longitude").setValue(longitude);
+
 
                         pinCode = address.get(0).getPostalCode();
 
