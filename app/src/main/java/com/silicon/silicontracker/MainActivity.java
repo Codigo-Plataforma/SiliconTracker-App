@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -40,7 +41,7 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btnUpload;
+    Button btnUpload,btnGetData;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     String latitude,longitude,city,fullAddress,pinCode;
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnUpload=findViewById(R.id.btnUpload);
+
+        btnGetData = findViewById(R.id.btnGetData);
+        btnGetData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,GetDataActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 
