@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
 
     String latitude,longitude,city,fullAddress,pinCode;
+    ProgressBar progressBar;
 
 
 
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnUpload=findViewById(R.id.btnUpload);
+
+        progressBar = findViewById(R.id.progressBar);
+
 
         btnGetData = findViewById(R.id.btnGetData);
         btnGetData.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)==
                         PackageManager.PERMISSION_GRANTED)
                 {
+                    progressBar.setVisibility(View.VISIBLE);
                     getLocation();
 
                 }
@@ -143,15 +149,18 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 Log.d("responseFromServer",response);
 
+
                 try {
                     JSONObject responseFromServer = new JSONObject(response);
 
                     String message = responseFromServer.getString("message");
                     if(message.equals("Location Updated"))
                     {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
+                    progressBar.setVisibility(View.GONE);
                     e.printStackTrace();
                 }
 
@@ -160,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
                 Log.d("Error", error.toString());
             }
         }) {
@@ -179,21 +189,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                /*
-                 "fullAddress" : "sambalpur, odisha",
-    "city" : "hfihsfgs",
-    "pinCode" : 362649,
-    "latitude" : "7350830753",
-    "longitude" : "902382842"w
-                 */
             }
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                HashMap<String, String> headers = new HashMap<String, String>();
-//                headers.put("Content-Type", "application/json");
-//                headers.put( "charset", "utf-8");
-//                return headers;
-//            }
+
         };
 
         requestQueue.add(stringRequest);
