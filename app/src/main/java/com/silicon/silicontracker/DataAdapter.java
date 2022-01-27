@@ -13,16 +13,17 @@ import java.util.ArrayList;
 
 public class DataAdapter  extends RecyclerView.Adapter<DataAdapter.viewHolderRv> {
 
-   ArrayList<String> latitude,longitude,city,pinCode,address;
+   ArrayList<String> latitude,longitude,city,pinCode,address,time;
 
 
-    public DataAdapter(ArrayList<String> latitude, ArrayList<String> longitude, ArrayList<String> city, ArrayList<String> pinCode, ArrayList<String> address) {
+    public DataAdapter(ArrayList<String> latitude, ArrayList<String> longitude, ArrayList<String> city, ArrayList<String> pinCode, ArrayList<String> address,ArrayList<String> time) {
 
         this.latitude=latitude;
         this.longitude=longitude;
         this.city=city;
         this.pinCode=pinCode;
         this.address=address;
+        this.time=time;
     }
 
 
@@ -44,6 +45,7 @@ public class DataAdapter  extends RecyclerView.Adapter<DataAdapter.viewHolderRv>
         holder.longitude.setText(longitude.get(position));
         holder.latitude.setText(latitude.get(position));
         holder.city.setText(city.get(position));
+        holder.time.setText(time.get(position));
 
     }
 
@@ -53,7 +55,7 @@ public class DataAdapter  extends RecyclerView.Adapter<DataAdapter.viewHolderRv>
     }
 
     public class viewHolderRv extends RecyclerView.ViewHolder{
-        TextView latitude,longitude,city;
+        TextView latitude,longitude,city,time;
 
         public viewHolderRv(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);
@@ -62,6 +64,7 @@ public class DataAdapter  extends RecyclerView.Adapter<DataAdapter.viewHolderRv>
             latitude=itemView.findViewById(R.id.latitude);
             longitude=itemView.findViewById(R.id.longitude);
             city = itemView.findViewById(R.id.city);
+            time=itemView.findViewById(R.id.time);
 
         }
     }

@@ -17,9 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -39,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+//
 
 
 public class MainActivity extends AppCompatActivity {
@@ -106,15 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                         List<Address> address = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-
-                        Log.d("siddheswar", address.toString());
-
                         float lati = (float) address.get(0).getLatitude();
                         latitude= String.valueOf(lati);
-
-
-
-
                         float longi = (float) address.get(0).getLongitude();
                         longitude= String.valueOf(longi);
 
@@ -139,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     private void setLocationToServer()
     {
@@ -183,8 +176,6 @@ public class MainActivity extends AppCompatActivity {
                 params.put("latitude",latitude);
                 params.put("longitude",longitude);
                 params.put("pinCode",pinCode);
-
-
                 return params;
 
 

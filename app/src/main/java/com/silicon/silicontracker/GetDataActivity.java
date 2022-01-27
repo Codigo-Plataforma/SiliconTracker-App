@@ -30,7 +30,7 @@ public class GetDataActivity extends AppCompatActivity {
     Button btnGetMore;
 
 
-    ArrayList<String> longitude, latitude, city, pinCode, address;
+    ArrayList<String> longitude, latitude, city, pinCode, address,time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +57,10 @@ public class GetDataActivity extends AppCompatActivity {
         city = new ArrayList<>();
         pinCode = new ArrayList<>();
         address = new ArrayList<>();
+        time = new ArrayList<>();
 
 
-        db = new DataAdapter(latitude, longitude, city, pinCode, address);
+        db = new DataAdapter(latitude, longitude, city, pinCode, address,time);
 
 
 
@@ -79,7 +80,7 @@ public class GetDataActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
 
 
-                Log.d("responseSidd",response.toString());
+//                Log.d("responseSidd",response.toString());
 
                 try {
 
@@ -91,6 +92,7 @@ public class GetDataActivity extends AppCompatActivity {
                         latitude.add(jsonObjectRequest.getString("latitude"));
                         pinCode.add(jsonObjectRequest.getString("pinCode"));
                         city.add(jsonObjectRequest.getString("city"));
+                        time.add(jsonObjectRequest.getString("lastUpdatedTime"));
                     }
                     recyclerView.setAdapter(db);
                 } catch (Exception e) {
